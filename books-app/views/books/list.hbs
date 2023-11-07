@@ -1,0 +1,44 @@
+<div class="container">
+    <h1>Listado de libros</h1>
+    <hr>
+
+    <table class="table">
+
+        <tbody>
+
+            {{#each books}}
+
+            <tr>
+
+                <td>
+                    <a href="/libros/detalles/{{_id}}">
+                        {{title}}
+                    </a>
+                </td>
+
+                {{#if ../isAdmin}}
+                <td>
+                    <a href="/libros/editar/{{_id}}" class="btn btn-warning btn-sm">editar</a>
+                </td>
+
+                <td>
+                    <form action="/libros/eliminar/{{_id}}" method="POST">
+                        <input type="submit" value="eliminar" class="btn btn-danger btn-sm">
+                    </form>
+                </td>
+                {{/if}}
+
+                {{#if ../isEditor}}
+                <td>
+                    <a href="/libros/editar/{{_id}}" class="btn btn-warning btn-sm">editar</a>
+                </td>
+                {{/if}}
+
+            </tr>
+
+            {{/each}}
+
+        </tbody>
+
+    </table>
+</div>
